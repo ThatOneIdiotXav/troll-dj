@@ -61,12 +61,6 @@ class Main extends Sprite
 	public static var fpsVar:FPS;
 	public static var bread:Bread;
 
-	#if ALLOW_DEPRECATION
-	@:noCompletion @:deprecated("volumeChangedEvent is deprecated, use FlxG.sound.onVolumeChange, instead") 
-	public static var volumeChangedEvent(get, never):flixel.util.FlxSignal.FlxTypedSignal<Float -> Void>;
-	@:noCompletion inline static function get_volumeChangedEvent() return FlxG.sound.onVolumeChange;
-	#end
-
 	////
 
 	#if desktop

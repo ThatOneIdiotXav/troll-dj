@@ -1,8 +1,21 @@
 @echo off
-color 0a
+cls
+setlocal
+
 cd ..
-echo Install Haxe libraries?
-pause
+@REM goto WARN_DEPRECATION
+
+:WARN_DEPRECATION
+echo This method of installing Haxelibs is deprecated, and will be missing some packages.
+echo Instead, run "haxelib run hmm install" instead.
+echo (assuming hmm is installed, otherwise run "haxelib install hmm" beforehand).
+
+choice /m "Do you still wish to use this tool? "
+if '%errorlevel%'=='1' goto DO_IT_ANYWAY
+if '%errorlevel%'=='2' goto ACTUALLY_BE_SMART_ABOUT_IT
+endlocal
+
+:DO_IT_ANYWAY
 cls
 @echo on
 haxelib --always --quiet install lime 8.1.3
@@ -19,3 +32,8 @@ haxelib --always --quiet install moonchart 0.4.0
 echo ---------
 echo Finished!
 pause
+endlocal
+
+:ACTUALLY_BE_SMART_ABOUT_IT
+echo OK.
+endlocal

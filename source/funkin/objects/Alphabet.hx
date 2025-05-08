@@ -26,19 +26,6 @@ class Alphabet extends FlxTypedSpriteGroup<AlphaCharacter>
 	public var xAdd:Float = 0;
 	public var yAdd:Float = 0;
 
-	////
-	#if ALLOW_DEPRECATION
-	@:deprecated public var lettersArray(get, never):Array<AlphaCharacter>;
-	@:noCompletion function get_lettersArray():Array<AlphaCharacter> return cast members;
-
-	@:deprecated public var isBold(get, set):Bool;
-	@:noCompletion function set_isBold(v):Bool return bold = v;
-	@:noCompletion function get_isBold():Bool return bold;
-
-	@:deprecated public function changeText(newText:String, aaaaaaaa)
-		this.text = newText;
-	#end
-
 	// public function new(x:Float, y:Float, fieldWidth = 0.0, text = "", textScale = 1.0)
 	public function new(x:Float = 0, y:Float = 0, text:String = "", bold:Bool = false, ?fuck:Dynamic, ?lol:Dynamic, textScale = 1.0)
 	{

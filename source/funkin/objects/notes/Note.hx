@@ -254,23 +254,6 @@ class Note extends NoteObject
 	public var copyAlpha:Bool = true;
 	public var copyVerts:Bool = true;
 
-	#if ALLOW_DEPRECATION
-	// Angle is controlled by verts in the modchart system
-	@:noCompletion public var copyAngle(get, set):Bool;
-	@:noCompletion inline function get_copyAngle() return copyVerts;
-	@:noCompletion inline function set_copyAngle(val:Bool) return copyVerts = val;
-	
-	@:noCompletion public var multAlpha(get, set):Float;
-	@:noCompletion inline function get_multAlpha()return alphaMod;
-	@:noCompletion inline function set_multAlpha(v:Float)return alphaMod = v;
-	
-	public var realColumn:Int; 
-	//// backwards compat
-	@:noCompletion public var realNoteData(get, set):Int; 
-	@:noCompletion inline function get_realNoteData() return realColumn;
-	@:noCompletion inline function set_realNoteData(v:Int) return realColumn = v;
-	#end
-
 	@:noCompletion function get_canBeHit() return UNJUDGED != PlayState.instance.judgeManager.judgeNote(this);
 
 	@:noCompletion inline function get_noteSplashDisabled() return noteSplashBehaviour == DISABLED;

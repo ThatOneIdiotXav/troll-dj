@@ -144,36 +144,6 @@ class Character extends FlxSprite
 	public var originalFlipX:Bool = false;
 	public var healthColorArray:Array<Int> = [255, 0, 0];
 
-	#if ALLOW_DEPRECATION
-	@:deprecated
-	public var danced:Bool = false;
-
-	@:deprecated("curCharacter is deprecated. Use characterId instead.")
-	public var curCharacter(get, set):String;
-	inline function get_curCharacter() return characterId;
-	inline function set_curCharacter(v:String) return characterId = v;
-	
-	@:deprecated("deathName is deprecated. Use deathId instead.")
-	public var deathName(get, set):String;
-	inline function get_deathName() return deathId;
-	inline function set_deathName(v:String) return deathId = v;
-
-	/**LEGACY. DO NOT USE.**/
-	@:deprecated("characterScript is deprecated. Use pushScript and removeScript instead.")
-	public var characterScript(get, set):FunkinScript;
-	@:noCompletion
-	inline function get_characterScript()
-		return characterScripts[0];
-	@:noCompletion
-	function set_characterScript(script:FunkinScript){ // you REALLY shouldnt be setting characterScript, you should be using the removeScript and addScript functions though;
-		var oldScript = characterScripts.shift(); // removes the first script
-		stopScript(oldScript, true);
-		characterScripts.unshift(script); // and replaces it w/ the new one
-		startScript(script);
-		return script;
-	}
-	#end
-
 	override function destroy()
 	{
 		for(script in characterScripts)

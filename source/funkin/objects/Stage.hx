@@ -46,12 +46,6 @@ class Stage extends FlxTypedGroup<FlxBasic>
 	public var stageScript:FunkinHScript;
 	public var spriteMap = new Map<String, FlxBasic>();
 
-	#if ALLOW_DEPRECATION
-	@:deprecated("curStage is deprecated. Use stageId instead.")
-	public var curStage(get, never):String;
-	inline function get_curStage() return stageId;
-	#end
-
 	public function new(stageId:String, runScript:Bool = true)
 	{
 		super();
@@ -90,10 +84,6 @@ class Stage extends FlxTypedGroup<FlxBasic>
 			// define variables lolol
 			stageScript.set("this", this);
 			stageScript.set("foreground", foreground);
-
-			#if ALLOW_DEPRECATION
-			stageScript.set("stage", this); // for backwards compat lol
-			#end
 
 			stageScript.set("add", add);
 			stageScript.set("remove", remove);

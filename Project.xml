@@ -86,10 +86,6 @@
 	<!--Remove if you dont want the engine to autoupdate -->
     <define name="DO_AUTO_UPDATE" if="native desktop OFFICIAL_BUILD" unless="debug" />
 
-	<!--Remove if you don't want to allow deprecated engine features.-->
-	<!--Anything marked as deprecated should be removed after a major or minor version but not after patches. (major.minor.patch)-->
-    <define name="ALLOW_DEPRECATION" unless="final"/>
-
 	<!--Remove if you don't want options for the game to continue running after a crash -->
 	<define name="WINDOWS_CRASH_HANDLER" if="windows cpp" />
 	<!--Remove if you don't want crash logs to be saved-->

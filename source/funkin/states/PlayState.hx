@@ -194,12 +194,6 @@ class PlayState extends MusicBeatState
 	public var centerNotefield:Bool = false;
 	/** Whether to save the score. modcharted songs should set this to false if disableModcharts is true **/
 	public var saveScore:Bool = true;
-	
-	#if ALLOW_DEPRECATION
-	@:deprecated public var midScroll(get, set):Bool;
-	@:noCompletion function get_midScroll() return centerNotefield;
-	@:noCompletion function set_midScroll(v) return centerNotefield = v;
-	#end
 
 	////
 	public var worldCombos:Bool = false;
@@ -296,10 +290,6 @@ class PlayState extends MusicBeatState
 	public var opponentCameraOffset:Array<Float> = null;
 	public var girlfriendCameraOffset:Array<Float> = null;
 
-	// Default sing animations. You should be using playfield.singAnimations instead!!
-	#if ALLOW_DEPRECATION
-	public var singAnimations:Array<String> = ["singLEFT", "singDOWN", "singUP", "singRIGHT"];
-	#end
 	public var focusedChar:Character;
 	public var gfSpeed:Int = 1;
 
@@ -336,13 +326,6 @@ class PlayState extends MusicBeatState
 	public var songLength:Float = 0;
 	public var songHighscore:Int = 0;
 	public var songTrackNames:Array<String> = [];
-
-	#if ALLOW_DEPRECATION
-	/** Formatted song name **/
-	@:deprecated("songName is deprecated! use songId instead!")
-	public var songName(get, never):String;
-	function get_songName() return songId;
-	#end
 
 	////
 	private var generatedMusic:Bool = false;
@@ -846,11 +829,6 @@ class PlayState extends MusicBeatState
 			add(stage.foreground);
 		}
 		
-		//// Generate playfields so you can actually, well, play the game
-		#if ALLOW_DEPRECATION
-		callOnScripts("prePlayfieldCreation"); // backwards compat
-		// TODO: add deprecation messages to function callbacks somehow
-		#end
 		callOnScripts("onPlayfieldCreation"); // you should use this
 		playfields.cameras = [camHUD];
 		notes.cameras = [camHUD];
@@ -876,9 +854,6 @@ class PlayState extends MusicBeatState
 			dadField.noteHitCallback = playOpponent ? goodNoteHit : opponentNoteHit;
 		}
 		
-		#if ALLOW_DEPRECATION
-		callOnScripts("postPlayfieldCreation"); // backwards compat
-		#end
 		callOnScripts("onPlayfieldCreationPost");
 
 		////
@@ -1305,10 +1280,6 @@ class PlayState extends MusicBeatState
 
 		generateStrums();
 
-		#if ALLOW_DEPRECATION
-		callOnScripts('preModifierRegister'); // deprecated
-		#end
-
 		if (callOnScripts('onModifierRegister') != Globals.Function_Stop) {
 			modManager.registerDefaultModifiers();
 
@@ -1331,9 +1302,6 @@ class PlayState extends MusicBeatState
 
 			signals.onModifierRegister.dispatch();
 		}
-		#if ALLOW_DEPRECATION
-		callOnScripts('postModifierRegister'); // deprecated
-		#end
 		callOnScripts('onModifierRegisterPost');
 		signals.onModifierRegisterPost.dispatch();
 
@@ -1716,9 +1684,6 @@ class PlayState extends MusicBeatState
 				var daType:String = songNotes[3];
 
 				var swagNote:Note = new Note(daStrumTime, daColumn, prevNote, gottaHitNote, songNotes[2] > 0 ? HEAD : TAP, false, hudSkin);
-				#if ALLOW_DEPRECATION
-				swagNote.realColumn = daNoteData;
-				#end
 				swagNote.sustainLength = songNotes[2] <= Conductor.stepCrotchet ? songNotes[2] : (susLength + 1) * Conductor.stepCrotchet; // +1 because hold end
 				swagNote.ID = notes.length;
 
@@ -1763,9 +1728,6 @@ class PlayState extends MusicBeatState
 				
 				inline function makeSustain(susNote:Int, susPart:SustainPart) {
 					var sustainNote:Note = new Note(daStrumTime + Conductor.stepCrochet * (susNote + 1), daColumn, prevNote, gottaHitNote, susPart, false, hudSkin);
-					#if ALLOW_DEPRECATION
-					sustainNote.realColumn = daNoteData;
-					#end
 					sustainNote.ID = notes.length;
 					modchartObjects.set('note${sustainNote.ID}', sustainNote);
 
@@ -2097,17 +2059,11 @@ class PlayState extends MusicBeatState
 
 	private function generateStrums():Void
 	{
-		#if ALLOW_DEPRECATION
-		callOnScripts('preReceptorGeneration'); // backwards compat, deprecated
-		#end
 		callOnScripts('onReceptorGeneration');
 
 		for(field in playfields.members)
 			field.generateStrums();
 
-		#if ALLOW_DEPRECATION
-		callOnScripts('postReceptorGeneration'); // deprecated
-		#end
 		callOnScripts('onReceptorGenerationPost');
 
 		for(field in playfields.members)
@@ -4000,9 +3956,6 @@ class PlayState extends MusicBeatState
 		stats.updateVariables();
 		
 		hud.recalculateRating();
-		#if ALLOW_DEPRECATION
-		callOnScripts('postRecalculateRating'); // deprecated
-		#end
 
 		callOnScripts('onRecalculateRatingPost');
 
