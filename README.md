@@ -1,4 +1,4 @@
-<font color=gray>[Troll Engine's README can be read by clicking this.](./README-TROLL.md)</font>
+[Troll Engine's README can be read by clicking this.](./README-TROLL.md)
 
 ---
 
@@ -14,4 +14,4 @@ Alternatively, you can use [the turntable-compatible fork of WiitarThing by _The
 
 ### For other kinds of DJ Hero controllers...
 It _should_ work just-as.  
-<font color=gray>_Keyword: "should"._</font>
+_Keyword: "should"._
