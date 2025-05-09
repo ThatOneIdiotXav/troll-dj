@@ -792,20 +792,19 @@ class ClientPrefs {
 		'note_down' => [A, DPAD_DOWN],
 		'note_up' => [Y, DPAD_UP],
 		'note_right' => [B, DPAD_RIGHT],
-		/*
-			'dodge' => [],
+		
+		'euphoria' => [Y], // TODO: make this work properly
+		
+		'pause' => [],
+		'reset' => [],
 
-			'pause' => [],
-			'reset' => [],
+		'ui_left' => [DPAD_LEFT],
+		'ui_down' => [DPAD_DOWN],
+		'ui_up' => [DPAD_UP],
+		'ui_right' => [DPAD_RIGHT],
 
-			'ui_left' => [DPAD_LEFT],
-			'ui_down' => [DPAD_DOWN],
-			'ui_up' => [DPAD_UP],
-			'ui_right' => [DPAD_RIGHT],
-
-			'accept' => [A],
-			'back' => [B],
-		 */
+		'accept' => [A],
+		'back' => [B],
 	];
 	public static var defaultKeys:Map<String, Array<FlxKey>> = null;
 	public static var defaultButtons:Map<String, Array<FlxGamepadInputID>> = null;
